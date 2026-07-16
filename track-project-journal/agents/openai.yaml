@@ -1,0 +1,4 @@
+interface:
+  display_name: "Track Project Journal"
+  short_description: "Write durable, evidence-based project journals"
+  default_prompt: "Use $track-project-journal to record today’s work as a concise, resumable project entry."
