@@ -5,6 +5,8 @@ work to Done.
 
 ## Active / Next
 
+- [ ] Review and merge draft PR #1 for the initial resumable-project skill
+  suite.
 - [ ] Verify implicit trigger discovery for all three installed skills in a
   fresh Codex session.
 
@@ -22,3 +24,5 @@ work to Done.
   `manage-project-todo`, and `bootstrap-resumable-project`.
 - [x] Installed source-matching copies of all three skills into the global Codex
   skills directory.
+- [x] Created the public `whalesalad/skills` repository and published the suite
+  as draft PR #1.
