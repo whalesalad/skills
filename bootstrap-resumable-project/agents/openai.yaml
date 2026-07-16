@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bootstrap Resumable Project"
+  short_description: "Add durable journal, TODO, and handoff practices"
+  default_prompt: "Use $bootstrap-resumable-project to make this repository easy to resume across sessions."

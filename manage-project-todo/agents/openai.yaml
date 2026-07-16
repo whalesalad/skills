@@ -1,0 +1,4 @@
+interface:
+  display_name: "Manage Project TODO"
+  short_description: "Keep project priorities current and actionable"
+  default_prompt: "Use $manage-project-todo to reconcile and prioritize the project’s current task tracker."
