@@ -7,15 +7,23 @@ work to Done.
 
 - [ ] Review and merge draft PR #2 for the initial resumable-project skill
   suite.
+- [ ] Push the Claude Code support branch and confirm
+  `/plugin marketplace add whalesalad/skills` resolves from GitHub. Only the
+  local-directory source has been exercised so far.
 - [ ] Verify implicit trigger discovery for all three installed skills in a
-  fresh Codex session.
+  fresh session of each agent, Codex and Claude Code.
 
 ## Later
 
 - [ ] Add realistic forward-test fixtures when the suite gains behavior that
   cannot be covered by structural and scenario review alone.
+- [ ] Consider `claude plugin eval` cases once the suite has behavior worth
+  scoring against a no-plugin baseline.
 
 ## Done
+
+- [x] Added Claude Code support: `skills/` layout, plugin and marketplace
+  manifests, dual-target installer, and an agent-independent validator.
 
 - [x] Distilled the journal, TODO, and resumable-project practices into a
   public-safe design.

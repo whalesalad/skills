@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Create three globally available Codex skills that make project work durable
+Create three globally available agent skills that make project work durable
 across sessions without forcing every repository into one rigid template:
 
 - `track-project-journal` maintains a narrative evidence trail.
@@ -12,8 +12,8 @@ across sessions without forcing every repository into one rigid template:
   instructions.
 
 The source lives in this repository so the practices can be reviewed, branched,
-tested, and improved. Finished skills are installed under `~/.codex/skills` for
-global discovery.
+tested, and improved. Finished skills reach Claude Code as the
+`resumable-project` plugin and Codex through a copy into `~/.codex/skills`.
 
 ## Provenance
 
@@ -76,7 +76,8 @@ changing the project backlog unless the user explicitly asks for both skills.
 ### Discovery
 
 1. Locate the repository root.
-2. Read applicable `AGENTS.md` files and any repository-local journal guidance.
+2. Read applicable agent instruction files and any repository-local journal
+   guidance.
 3. Inspect recent journal entries to learn the established path and style.
 4. Inspect current-session evidence such as the conversation, working-tree
    diff, recent relevant commits, commands, and validation output.
@@ -195,8 +196,8 @@ available.
 
 Normally:
 
-- Create or extend `AGENTS.md` with concise session-start and session-close
-  guidance.
+- Create or extend the repository's agent instructions with concise
+  session-start and session-close guidance.
 - Establish `TODO.md` as the prioritized current-state tracker.
 - Establish `docs/journal/` and its local convention.
 - Mention `track-project-journal` and `manage-project-todo` by name, with a
@@ -229,7 +230,12 @@ when actual content benefits from them:
 Do not create empty directories or migrate established content without a clear
 benefit.
 
-### `AGENTS.md` integration
+### Agent instruction integration
+
+Write the shared contract once. `AGENTS.md` is the default home; a `CLAUDE.md`
+containing `@AGENTS.md` bridges it to Claude Code, which does not read
+`AGENTS.md`. When a repository already keeps its guidance in one of those files
+alone, extend that file rather than splitting the contract across two.
 
 Keep injected guidance concise. It should communicate that agents must:
 
@@ -275,26 +281,54 @@ The skill descriptions must support natural requests such as:
 
 ## Packaging
 
-Use one directory per skill:
+Use one directory per skill under a shared `skills/` root:
 
 ```text
-track-project-journal/
+skills/track-project-journal/
   SKILL.md
   agents/openai.yaml
-manage-project-todo/
+skills/manage-project-todo/
   SKILL.md
   agents/openai.yaml
-bootstrap-resumable-project/
+skills/bootstrap-resumable-project/
   SKILL.md
   agents/openai.yaml
+.claude-plugin/
+  plugin.json
+  marketplace.json
 ```
 
 Keep each `SKILL.md` concise and imperative. Do not add scripts unless testing
 shows that deterministic automation is needed; repository-aware editing is
 primarily a judgment-driven workflow.
 
-Install the three finished skill directories under `~/.codex/skills`. The
-repository remains the editable source of truth.
+### One source, two distribution paths
+
+`skills/` is the directory a Claude Code plugin scans by default, so the same
+layout serves both agents:
+
+| Agent | Path | Mechanism |
+|---|---|---|
+| Claude Code | `/plugin install resumable-project@whalesalad-skills` | Git-hosted marketplace; Claude Code caches the repository |
+| Codex | `./scripts/install.sh --codex` | Copy into `~/.codex/skills` |
+
+The repository remains the editable source of truth for both. Claude Code
+plugin users receive an update only when `version` moves in both
+`.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`.
+
+### Cross-agent portability constraints
+
+- Restrict `SKILL.md` frontmatter to the Agent Skills spec fields (`name`,
+  `description`, `license`, `compatibility`, `metadata`, `allowed-tools`).
+  Claude Code accepts additional fields, but claude.ai uploads and the Skills
+  API reject them.
+- Keep `agents/openai.yaml` accurate. Codex reads it for skill-picker metadata;
+  Claude Code ignores it.
+- Write skill bodies against agent instruction files in general. Codex reads
+  `AGENTS.md`; Claude Code reads `CLAUDE.md` and `.claude/rules/`. A skill that
+  names only one of them silently misses guidance on the other agent.
+- Claude Code namespaces plugin skills as `/resumable-project:<name>`. Skills
+  must therefore refer to each other by bare name rather than by slash command.
 
 ## Validation
 
@@ -310,9 +344,13 @@ against fixture repositories covering:
 - Conflicting local instructions.
 
 Validate that no fixture or committed documentation contains sensitive source
-material. Since global skill discovery is normally refreshed between Codex
-sessions, verify the installed paths immediately and verify trigger discovery
-in a fresh session when practical.
+material.
+
+Run `./scripts/check.sh`. It applies `scripts/validate_skills.py`, which needs
+no agent installed, and then the Codex structural validator when that is
+available locally. Both agents refresh their skill catalog between sessions, so
+verify the installed paths immediately and verify trigger discovery in a fresh
+session of each agent when practical.
 
 ## Success Criteria
 
@@ -326,3 +364,5 @@ in a fresh session when practical.
 - The public repository contains no sensitive provenance or project data.
 - The source repository and global installation contain the same reviewed skill
   versions.
+- Each skill behaves identically on Claude Code and Codex, and installing on
+  one agent requires no edit that would break the other.

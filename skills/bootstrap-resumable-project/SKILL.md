@@ -23,8 +23,10 @@ this skill and report the missing component.
 ## Audit before patching
 
 1. Locate the repository root and read all applicable instructions.
-2. Inspect `AGENTS.md`, current trackers, recent journal entries, handoff files,
-   documentation indexes, and recent relevant history.
+2. Inspect existing agent instruction files (`AGENTS.md`, `CLAUDE.md`,
+   `.claude/rules/`, or another agent's equivalent), current trackers, recent
+   journal entries, handoff files, documentation indexes, and recent relevant
+   history.
 3. Classify the request as a new-project scaffold or an existing-project
    upgrade.
 4. Identify the actual continuity gaps. Do not assume every supported artifact
@@ -39,8 +41,8 @@ this skill and report the missing component.
 
 Normally establish:
 
-- A concise `AGENTS.md` section explaining session start, journal, and TODO
-  behavior.
+- A concise agent-instructions section explaining session start, journal, and
+  TODO behavior.
 - `TODO.md` as the prioritized current-state tracker.
 - `docs/journal/README.md` describing the local journal convention.
 - A dated journal entry for meaningful scaffold work actually performed.
@@ -82,7 +84,22 @@ Introduce documentation categories only when real content benefits:
 
 Do not create empty directories or migrate content merely to fit this taxonomy.
 
-## Keep `AGENTS.md` guidance concise
+## Place agent instructions where every agent reads them
+
+Follow the repository's existing arrangement when one exists. Otherwise write
+the shared contract once in `AGENTS.md`, then bridge it to any agent that does
+not read that filename:
+
+- Claude Code reads `CLAUDE.md`, not `AGENTS.md`. Create a `CLAUDE.md`
+  containing the line `@AGENTS.md` so both files stay in sync from one source.
+  Add Claude-specific guidance below the import only when it exists.
+- Codex reads `AGENTS.md` directly and needs no bridge.
+
+Never maintain the same guidance in two files by hand. If a repository already
+has a populated `CLAUDE.md` and no `AGENTS.md`, extend `CLAUDE.md` in place
+rather than splitting its contents.
+
+## Keep the guidance concise
 
 Adapt, rather than paste, guidance equivalent to:
 

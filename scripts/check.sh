@@ -2,28 +2,25 @@
 set -euo pipefail
 
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+source_root="${repo_root}/skills"
 codex_home="${CODEX_HOME:-${HOME}/.codex}"
-validator="${codex_home}/skills/.system/skill-creator/scripts/quick_validate.py"
+codex_validator="${codex_home}/skills/.system/skill-creator/scripts/quick_validate.py"
 
-skills=(
-  track-project-journal
-  manage-project-todo
-  bootstrap-resumable-project
-)
+# Portable structural validation: frontmatter, naming, size, Codex UI metadata,
+# and the Claude Code plugin manifests.
+python3 "${repo_root}/scripts/validate_skills.py"
 
-if [[ ! -f "${validator}" ]]; then
-  echo "error: skill validator not found at ${validator}" >&2
-  exit 1
+# Codex's own validator when it is available locally. Absence is not a failure,
+# so contributors who only run Claude Code can still validate the repository.
+if [[ -f "${codex_validator}" ]]; then
+  for skill_dir in "${source_root}"/*/; do
+    python3 "${codex_validator}" "${skill_dir%/}"
+  done
+else
+  echo "note: Codex validator not found at ${codex_validator}; skipped"
 fi
 
-for skill in "${skills[@]}"; do
-  python3 "${validator}" "${repo_root}/${skill}"
-done
-
-if grep -R -n -E '\[TODO|\[TBD|FIXME' \
-  "${repo_root}/track-project-journal" \
-  "${repo_root}/manage-project-todo" \
-  "${repo_root}/bootstrap-resumable-project"; then
+if grep -R -n -E '\[TODO|\[TBD|FIXME' "${source_root}"; then
   echo "error: generated placeholder remains in a skill" >&2
   exit 1
 fi

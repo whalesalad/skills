@@ -12,7 +12,9 @@ record only supported facts.
 
 1. Locate the repository root. Prefer `git rev-parse --show-toplevel`; otherwise
    use the clearly identified project directory.
-2. Read applicable `AGENTS.md` files, journal guidance, and recent entries.
+2. Read every applicable agent instruction file, plus journal guidance and
+   recent entries. Instructions may live in `AGENTS.md`, `CLAUDE.md`,
+   `.claude/rules/`, or another agent's equivalent.
 3. Inspect evidence relevant to this session: the conversation, scoped working
    tree changes, relevant commits, commands, test output, and observations.
 4. Choose the journal file using the rules below.
