@@ -1,0 +1,23 @@
+{
+  "name": "whalesalad-skills",
+  "owner": {
+    "name": "whalesalad",
+    "url": "https://github.com/whalesalad"
+  },
+  "description": "Reusable agent skills distilled from working practices across many software projects",
+  "plugins": [
+    {
+      "name": "resumable-project",
+      "source": "./",
+      "description": "Journal, TODO, and bootstrap skills that make project work resumable across sessions",
+      "version": "0.1.0",
+      "category": "workflow",
+      "tags": [
+        "journal",
+        "todo",
+        "continuity",
+        "bootstrap"
+      ]
+    }
+  ]
+}

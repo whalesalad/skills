@@ -10,7 +10,8 @@ structure and avoid turning the tracker into a changelog.
 
 ## Follow the workflow
 
-1. Locate the repository root and read applicable `AGENTS.md` files.
+1. Locate the repository root and read every applicable agent instruction file:
+   `AGENTS.md`, `CLAUDE.md`, `.claude/rules/`, or another agent's equivalent.
 2. Identify the repository-defined canonical tracker. Prefer it over `TODO.md`.
 3. Inspect only the project state needed for the request: relevant journal or
    handoff notes, plans, issues, diffs, commits, and validation evidence.

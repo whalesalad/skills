@@ -1,7 +1,9 @@
 # Repository Guidance
 
-This is the public source repository for reusable Codex skills. Keep skill
-instructions concise, generic, and safe to share.
+This is the public source repository for reusable agent skills. The same
+`skills/<name>/SKILL.md` sources ship to Claude Code as a plugin and to Codex
+through `scripts/install.sh`. Keep skill instructions concise, generic, safe to
+share, and free of anything specific to one agent.
 
 ## Start Here
 
@@ -24,11 +26,21 @@ Read these before meaningful work:
 
 ## Skill Development
 
+- Create each skill as `skills/<name>/SKILL.md`. Both agents depend on that
+  path: Claude Code's plugin loader scans `skills/`, and the installer copies
+  from it.
 - Initialize new skills with the system `skill-creator` scaffolder.
 - Keep each `SKILL.md` imperative and under 500 lines.
+- Restrict frontmatter to the Agent Skills spec fields so a skill loads
+  unchanged on Claude Code, Codex, and claude.ai.
 - Put trigger conditions in the YAML description, not a body section.
 - Avoid extra files inside a skill unless they directly support its behavior.
-- Regenerate `agents/openai.yaml` when its UI metadata no longer matches.
+- Regenerate `agents/openai.yaml` when its UI metadata no longer matches. Claude
+  Code ignores the file; Codex needs it.
+- Write skill instructions so they hold on any agent. Refer to agent
+  instruction files generally rather than naming only `AGENTS.md`.
+- Bump `version` in both `.claude-plugin/plugin.json` and
+  `.claude-plugin/marketplace.json` when releasing a behavior change.
 - Run `./scripts/check.sh` before committing.
 - Run `./scripts/install.sh` only after reviewing the source diff.
 

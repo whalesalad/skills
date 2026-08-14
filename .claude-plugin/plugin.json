@@ -1,0 +1,19 @@
+{
+  "name": "resumable-project",
+  "description": "Journal, TODO, and bootstrap skills that make project work resumable across sessions",
+  "version": "0.1.0",
+  "author": {
+    "name": "whalesalad",
+    "url": "https://github.com/whalesalad"
+  },
+  "homepage": "https://github.com/whalesalad/skills",
+  "repository": "https://github.com/whalesalad/skills",
+  "license": "MIT",
+  "keywords": [
+    "journal",
+    "todo",
+    "handoff",
+    "continuity",
+    "bootstrap"
+  ]
+}
