@@ -53,6 +53,6 @@ installed into both the local Codex and Claude skill directories.
 
 ## Resume point
 
-Publish the branch as a draft PR. Dogfood the installed skill in fresh Codex
-and Claude sessions, then capture concrete friction as follow-up changes rather
-than guessing beyond the approved first version.
+Published the implementation as draft PR #4. Dogfood the installed skill in
+fresh Codex and Claude sessions, then capture concrete friction as follow-up
+changes rather than guessing beyond the approved first version.
