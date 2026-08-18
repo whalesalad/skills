@@ -5,6 +5,9 @@ work to Done.
 
 ## Active / Next
 
+- [ ] Implement the approved `concise-mode` skill design as a presentation-only
+  aid, validate its safety exceptions and composition with guided workflow, and
+  publish it in a dedicated PR. See `docs/concise-mode-skill-design.md`.
 - [ ] After merging the Claude Code support PR, confirm
   `/plugin marketplace add whalesalad/skills` resolves from GitHub. The
   manifests only reach the default branch at merge, so until then just the
