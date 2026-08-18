@@ -1,7 +1,7 @@
 {
   "name": "resumable-project",
-  "description": "Journal, TODO, and bootstrap skills that make project work resumable across sessions",
-  "version": "0.1.0",
+  "description": "Workflow skills for durable project context and guided, checkpointed execution",
+  "version": "0.2.0",
   "author": {
     "name": "whalesalad",
     "url": "https://github.com/whalesalad"
@@ -14,6 +14,8 @@
     "todo",
     "handoff",
     "continuity",
-    "bootstrap"
+    "bootstrap",
+    "runbook",
+    "guided-workflow"
   ]
 }

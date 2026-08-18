@@ -9,14 +9,16 @@
     {
       "name": "resumable-project",
       "source": "./",
-      "description": "Journal, TODO, and bootstrap skills that make project work resumable across sessions",
-      "version": "0.1.0",
+      "description": "Workflow skills for durable project context and guided, checkpointed execution",
+      "version": "0.2.0",
       "category": "workflow",
       "tags": [
         "journal",
         "todo",
         "continuity",
-        "bootstrap"
+        "bootstrap",
+        "runbook",
+        "guided-workflow"
       ]
     }
   ]

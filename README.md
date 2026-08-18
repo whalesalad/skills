@@ -5,6 +5,14 @@ across many kinds of software projects. They follow the
 [Agent Skills](https://agentskills.io) format and are supported on both
 Claude Code and Codex.
 
+## Guided workflow
+
+`guided-workflow` turns a complex plan or operational runbook into explicit,
+user-approved phases. It verifies evidence before advancing, supports flexible
+user-agent step ownership, and preserves the main workflow across diagnostic
+tangents. Agents may offer the mode when it would help, but it activates only
+after the user opts in.
+
 ## Resumable project suite
 
 The first three skills separate project continuity into composable concerns:
@@ -29,7 +37,7 @@ Install as a plugin. Nothing to clone:
 /plugin install resumable-project@whalesalad-skills
 ```
 
-All three skills arrive together, invocable as
+All skills arrive together, invocable as
 `/resumable-project:track-project-journal` and so on, or by their bare names
 when nothing else claims them. Claude also loads them on its own when a request
 matches a skill's description.

@@ -21,6 +21,10 @@ work to Done.
 
 ## Done
 
+- [x] Implemented and locally installed the `guided-workflow` skill for Codex
+  and Claude Code, with explicit opt-in, phase checkpoints, flexible ownership,
+  tangent recovery, and user controls. See
+  `docs/guided-workflow-skill-design.md`.
 - [x] Added Claude Code support: `skills/` layout, plugin and marketplace
   manifests, dual-target installer, and an agent-independent validator.
 - [x] Merged PR #2 with the initial resumable-project skill suite.
