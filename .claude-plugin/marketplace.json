@@ -9,8 +9,8 @@
     {
       "name": "resumable-project",
       "source": "./",
-      "description": "Workflow skills for durable project context and guided, checkpointed execution",
-      "version": "0.2.0",
+      "description": "Skills for durable project context, guided execution, and concise communication",
+      "version": "0.3.0",
       "category": "workflow",
       "tags": [
         "journal",
@@ -18,7 +18,9 @@
         "continuity",
         "bootstrap",
         "runbook",
-        "guided-workflow"
+        "guided-workflow",
+        "concise",
+        "communication"
       ]
     }
   ]

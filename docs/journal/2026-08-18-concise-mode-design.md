@@ -2,9 +2,8 @@
 
 ## Summary
 
-Designed a portable `concise-mode` skill that provides a light communication
-baseline, a stronger locked-in mode, and a normal/off control. The design is
-ready for user review before implementation.
+Designed and implemented a portable `concise-mode` skill that provides a light
+communication baseline, a stronger locked-in mode, and normal/off control.
 
 ## Decisions
 
@@ -31,8 +30,18 @@ low-preamble approach informed the principles. The proposed skill is
 independently authored and deliberately omits identity framing, task
 management, mandatory estimates, rigid list caps, and forced next actions.
 
+## Validation and installation
+
+The implementation lives at `skills/concise-mode/SKILL.md` with matching Codex
+UI metadata. Both Claude plugin manifests were bumped from `0.2.0` to `0.3.0`,
+and the README introduces the new capability.
+
+`./scripts/check.sh` validated all five skills and both plugin manifests; every
+skill passed Codex structural validation and all repository checks passed.
+`./scripts/install.sh --all` installed source-matching copies into both local
+Codex and Claude skill directories.
+
 ## Resume point
 
-After user review of `docs/concise-mode-skill-design.md`, initialize the skill
-with the system scaffolder, implement the approved behavior, bump both Claude
-plugin manifests to `0.3.0`, and run repository plus scenario validation.
+Push the implementation to draft PR #5 and dogfood the mode in fresh Codex and
+Claude sessions.

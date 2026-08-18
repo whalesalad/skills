@@ -1,0 +1,4 @@
+interface:
+  display_name: "Concise Mode"
+  short_description: "Clear, compact answers with adjustable brevity"
+  default_prompt: "Use $concise-mode to make your responses clear, compact, and easy to scan."

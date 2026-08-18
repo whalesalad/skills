@@ -1,7 +1,7 @@
 {
   "name": "resumable-project",
-  "description": "Workflow skills for durable project context and guided, checkpointed execution",
-  "version": "0.2.0",
+  "description": "Skills for durable project context, guided execution, and concise communication",
+  "version": "0.3.0",
   "author": {
     "name": "whalesalad",
     "url": "https://github.com/whalesalad"
@@ -16,6 +16,8 @@
     "continuity",
     "bootstrap",
     "runbook",
-    "guided-workflow"
+    "guided-workflow",
+    "concise",
+    "communication"
   ]
 }
