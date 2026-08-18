@@ -21,6 +21,9 @@ work to Done.
 
 ## Done
 
+- [x] Implemented and locally installed the presentation-only `concise-mode`
+  skill with a light baseline, adjustable brevity, safety exceptions, and
+  guided-workflow composition. See `docs/concise-mode-skill-design.md`.
 - [x] Implemented and locally installed the `guided-workflow` skill for Codex
   and Claude Code, with explicit opt-in, phase checkpoints, flexible ownership,
   tangent recovery, and user controls. See

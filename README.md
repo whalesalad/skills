@@ -5,6 +5,13 @@ across many kinds of software projects. They follow the
 [Agent Skills](https://agentskills.io) format and are supported on both
 Claude Code and Codex.
 
+## Concise mode
+
+`concise-mode` provides a light communication baseline with adjustable brevity.
+It favors direct answers and scannable structure while preserving every detail
+needed for safety, correctness, evidence, and decisions. Users can ask it to
+lock in, ease up, or return to normal without creating persistent state.
+
 ## Guided workflow
 
 `guided-workflow` turns a complex plan or operational runbook into explicit,
