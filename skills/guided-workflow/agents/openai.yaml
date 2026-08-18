@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guided Workflow"
+  short_description: "Work through complex runbooks one checkpoint at a time"
+  default_prompt: "Use $guided-workflow to guide me through this task one verified phase at a time."

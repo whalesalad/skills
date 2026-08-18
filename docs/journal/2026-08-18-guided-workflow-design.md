@@ -2,8 +2,8 @@
 
 ## Summary
 
-Designed a portable `guided-workflow` skill for user-guided, phase-gated
-runbooks. The design is ready for user review before implementation.
+Designed and implemented a portable `guided-workflow` skill for user-guided,
+phase-gated runbooks.
 
 ## Decisions
 
@@ -28,7 +28,31 @@ not copied into the public repository.
 
 ## Resume point
 
-After user review of `docs/guided-workflow-skill-design.md`, initialize the new
-skill with the system skill scaffolder, implement the approved behavior, bump
-both Claude plugin manifest versions, and run `./scripts/check.sh` plus the
-documented scenario review.
+The approved design was implemented at `skills/guided-workflow/SKILL.md` with
+matching Codex UI metadata. Both Claude plugin manifests were bumped from
+`0.1.0` to `0.2.0`, and the README now introduces the new capability.
+
+## Validation and installation
+
+```sh
+./scripts/check.sh
+```
+
+Observed: the portable validator accepted all four skills and both plugin
+manifests, every skill passed Codex structural validation, and all repository
+checks passed. Manual scenario review confirmed that the instructions cover
+offer versus activation, user and agent ownership, failed evidence, tangents,
+plan revision, pause/resume/stop, durable state, and final acknowledgment.
+
+```sh
+./scripts/install.sh --all
+```
+
+Observed: source copies of all four skills, including `guided-workflow`, were
+installed into both the local Codex and Claude skill directories.
+
+## Resume point
+
+Publish the branch as a draft PR. Dogfood the installed skill in fresh Codex
+and Claude sessions, then capture concrete friction as follow-up changes rather
+than guessing beyond the approved first version.

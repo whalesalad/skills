@@ -5,9 +5,6 @@ work to Done.
 
 ## Active / Next
 
-- [ ] Implement the approved `guided-workflow` skill design, validate its
-  offer-and-opt-in behavior and checkpoint scenarios, and publish it in a
-  dedicated PR. See `docs/guided-workflow-skill-design.md`.
 - [ ] After merging the Claude Code support PR, confirm
   `/plugin marketplace add whalesalad/skills` resolves from GitHub. The
   manifests only reach the default branch at merge, so until then just the
@@ -24,6 +21,10 @@ work to Done.
 
 ## Done
 
+- [x] Implemented and locally installed the `guided-workflow` skill for Codex
+  and Claude Code, with explicit opt-in, phase checkpoints, flexible ownership,
+  tangent recovery, and user controls. See
+  `docs/guided-workflow-skill-design.md`.
 - [x] Added Claude Code support: `skills/` layout, plugin and marketplace
   manifests, dual-target installer, and an agent-independent validator.
 - [x] Merged PR #2 with the initial resumable-project skill suite.
