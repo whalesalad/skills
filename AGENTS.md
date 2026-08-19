@@ -12,8 +12,7 @@ Read these before meaningful work:
 1. `README.md` for the repository workflow.
 2. `TODO.md` for current priorities.
 3. The latest files under `docs/journal/` for recent context.
-4. `docs/resumable-project-skills-design.md` when changing the resumable-project
-   suite's behavior.
+4. The relevant file under `docs/` when changing an existing skill's behavior.
 
 ## Project Continuity
 

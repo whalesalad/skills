@@ -5,12 +5,12 @@ work to Done.
 
 ## Active / Next
 
-- [ ] After merging the Claude Code support PR, confirm
-  `/plugin marketplace add whalesalad/skills` resolves from GitHub. The
-  manifests only reach the default branch at merge, so until then just the
-  local-directory source has been exercised.
-- [ ] Verify implicit trigger discovery for all three installed skills in a
-  fresh session of each agent, Codex and Claude Code.
+- [ ] Confirm `/plugin marketplace add whalesalad/skills` resolves from GitHub,
+  then verify that `claude plugin details resumable-project` lists all five
+  skills. The local-directory marketplace path is already validated.
+- [ ] Verify implicit trigger discovery for all five installed skills in fresh
+  Codex and Claude Code sessions; record any concrete discovery failures by
+  skill and host.
 
 ## Later
 
@@ -21,6 +21,9 @@ work to Done.
 
 ## Done
 
+- [x] Reconciled the repository documentation and backlog after PRs #3–#5
+  merged, including a complete five-skill catalog and current installation and
+  validation guidance.
 - [x] Implemented and locally installed the presentation-only `concise-mode`
   skill with a light baseline, adjustable brevity, safety exceptions, and
   guided-workflow composition. See `docs/concise-mode-skill-design.md`.

@@ -2,10 +2,11 @@
 
 ## Claude Code specifics
 
-- Skills in this repository are packaged as the `resumable-project` plugin.
-  `.claude-plugin/plugin.json` describes it and `.claude-plugin/marketplace.json`
-  publishes it. Bump `version` in both files together when skill behavior
-  changes; Claude Code only offers updates when that field moves.
+- All skills in this repository are packaged together in the historically
+  named `resumable-project` plugin. `.claude-plugin/plugin.json` describes it
+  and `.claude-plugin/marketplace.json` publishes it. Bump `version` in both
+  files together when skill behavior changes; Claude Code only offers updates
+  when that field moves.
 - `skills/<name>/` is the layout Claude Code's plugin loader scans. Do not move
   a skill out of that directory without also updating both manifests.
 - `agents/openai.yaml` inside each skill is Codex UI metadata. Claude Code
