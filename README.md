@@ -2,36 +2,28 @@
 
 Reusable agent skills developed from working practices that proved useful
 across many kinds of software projects. They follow the
-[Agent Skills](https://agentskills.io) format and are supported on both
-Claude Code and Codex.
+[Agent Skills](https://agentskills.io) format and are supported on Claude Code,
+Codex, and other compatible hosts.
 
-## Concise mode
+## Skills
 
-`concise-mode` provides a light communication baseline with adjustable brevity.
-It favors direct answers and scannable structure while preserving every detail
-needed for safety, correctness, evidence, and decisions. Users can ask it to
-lock in, ease up, or return to normal without creating persistent state.
+| Skill | Purpose |
+|---|---|
+| `bootstrap-resumable-project` | Add or improve a local-first journal, TODO tracker, and project continuity workflow. |
+| `concise-mode` | Keep responses compact and scannable without dropping details needed for correctness or safety. |
+| `guided-workflow` | Work through complex or sensitive tasks in explicit, user-approved phases. |
+| `manage-project-todo` | Keep a project's canonical backlog prioritized, current, and actionable. |
+| `track-project-journal` | Preserve durable, dated evidence, decisions, findings, and resume points. |
 
-## Guided workflow
+The three resumable-project skills compose around a deliberate split:
+`track-project-journal` preserves the story and evidence,
+`manage-project-todo` represents current actionable state, and
+`bootstrap-resumable-project` establishes both practices. `guided-workflow` and
+`concise-mode` are independent workflow and communication tools that can
+compose with them or with each other.
 
-`guided-workflow` turns a complex plan or operational runbook into explicit,
-user-approved phases. It verifies evidence before advancing, supports flexible
-user-agent step ownership, and preserves the main workflow across diagnostic
-tangents. Agents may offer the mode when it would help, but it activates only
-after the user opts in.
-
-## Resumable project suite
-
-The first three skills separate project continuity into composable concerns:
-
-- `track-project-journal` records the narrative and evidence behind meaningful
-  work.
-- `manage-project-todo` keeps the current queue prioritized and actionable.
-- `bootstrap-resumable-project` scaffolds new repositories or upgrades existing
-  ones by composing both practices with concise local guidance.
-
-They are intentionally local-first. Existing repository instructions and
-healthy conventions win over the suite's fallback structure.
+All repository-management skills are local-first: existing project
+instructions and healthy conventions win over their fallback structures.
 
 ## Install
 
@@ -44,10 +36,10 @@ Install as a plugin. Nothing to clone:
 /plugin install resumable-project@whalesalad-skills
 ```
 
-All skills arrive together, invocable as
-`/resumable-project:track-project-journal` and so on, or by their bare names
-when nothing else claims them. Claude also loads them on its own when a request
-matches a skill's description.
+All skills arrive together in the historically named `resumable-project`
+plugin. Invoke one as `/resumable-project:track-project-journal`, for example,
+or by its bare name when nothing else claims it. Claude can also load a skill
+automatically when a request matches its description.
 
 Update later with `/plugin marketplace update whalesalad-skills`.
 
@@ -73,9 +65,9 @@ Clone this repository, then run the installer:
 ./scripts/install.sh --codex
 ```
 
-It copies each reviewed skill directory into `${CODEX_HOME:-~/.codex}/skills`.
-Restart Codex or begin a fresh session if the new skills do not appear
-immediately.
+It copies every reviewed directory under `skills/` into
+`${CODEX_HOME:-~/.codex}/skills`. Restart Codex or begin a fresh session if the
+new skills do not appear immediately.
 
 ### Both, from a clone
 
@@ -100,10 +92,11 @@ other, not both.
 The source repository is authoritative; globally installed copies are build
 outputs.
 
-Releasing to Claude Code plugin users additionally requires bumping `version`
-in both `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`.
-Claude Code only offers an update when that field changes; `check.sh` fails if
-the two files disagree.
+When a skill's behavior changes, releasing to Claude Code plugin users also
+requires bumping `version` in both `.claude-plugin/plugin.json` and
+`.claude-plugin/marketplace.json`. Claude Code only offers an update when that
+field changes; `check.sh` fails if the two files disagree. Documentation-only
+changes do not require a plugin release.
 
 To iterate on the plugin against a local checkout instead of the published
 repository:
@@ -112,7 +105,7 @@ repository:
 claude plugin marketplace add ./            # register this working tree
 claude plugin install resumable-project@whalesalad-skills
 claude plugin validate .claude-plugin/plugin.json
-claude plugin details resumable-project     # confirm all three skills load
+claude plugin details resumable-project     # confirm every skill loads
 ```
 
 Re-adding the marketplace from `whalesalad/skills` later replaces the local
@@ -125,6 +118,8 @@ skills/<name>/SKILL.md            portable skill instructions
 skills/<name>/agents/openai.yaml  Codex UI metadata
 .claude-plugin/plugin.json        Claude Code plugin manifest
 .claude-plugin/marketplace.json   Claude Code marketplace catalog
+scripts/install.sh                copy skills into Codex and/or Claude homes
+scripts/check.sh                  run portable and host-specific validation
 CLAUDE.md                         imports AGENTS.md, plus Claude-specific notes
 AGENTS.md                         repository guidance for all agents
 ```
@@ -132,10 +127,13 @@ AGENTS.md                         repository guidance for all agents
 `skills/` is the directory a Claude Code plugin scans by default, and the
 installer copies from it for Codex, so one layout serves both.
 
-## Documentation
+## Design and history
 
-- [Design](docs/resumable-project-skills-design.md)
-- [Provenance](docs/provenance.md)
+- [Resumable-project suite design](docs/resumable-project-skills-design.md)
+- [Guided-workflow design](docs/guided-workflow-skill-design.md)
+- [Concise-mode design](docs/concise-mode-skill-design.md)
+- [Resumable-project provenance](docs/provenance.md)
+- [Project journal](docs/journal/README.md)
 
 ## Public-safety rule
 
